@@ -2,6 +2,14 @@
   "name": "backend_tienda_virtual",
   "version": "1.0.0",
   "description": "Esta aplicaci{on permite registrar productos, usuarios, pedidos en una base de datos",
+  "homepage": "https://github.com/Rgadielbg/backend-Tienda#readme",
+  "bugs": {
+    "url": "https://github.com/Rgadielbg/backend-Tienda/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rgadielbg/backend-Tienda.git"
+  },
   "license": "ISC",
   "author": "rgadielbg",
   "type": "commonjs",
