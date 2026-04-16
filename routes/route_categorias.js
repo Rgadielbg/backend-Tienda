@@ -1,13 +1,13 @@
-const categoriacontroller = require('../controllers/controller_categorias');
-module.exports = (app) => {
-   
+const categoriaController = require('../controllers/controller_categorias');
 
-   
-    app.get('api/categorias/list', categoriacontroller.list);
-    app.get('api/categorias/:nombre', categoriacontroller.find);
-    app.post('api/categorias/nombre/:nombre', categoriacontroller.create);
-    app.put('/api/categorias/:id', categoriacontroller.update);
-    app.delete('/api/categorias/:id', categoriacontroller.delete);
+module.exports = (app) => {
     
+    app.get('/api/categorias', categoriaController.list);
+    app.get('/api/categorias/:id', categoriaController.find);
+    app.post('/api/categorias', categoriaController.create);
+    app.put('/api/categorias/:id', categoriaController.update);
+    app.delete('/api/categorias/:id', categoriaController.delete);
+
+
 
 }

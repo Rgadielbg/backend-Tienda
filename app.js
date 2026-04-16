@@ -1,35 +1,44 @@
-requiere('dotenv').config();
-require('./routes')(app);
+require('dotenv').config();
 
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
 
-// INICIAR Y CONFIGURAR EXPRESS
+// 🔥 IMPORTAR TODAS LAS RUTAS
+const carritoRoutes = require('./routes/route_carrito');
+const categoriasRoutes = require('./routes/route_categorias');
+const productosRoutes = require('./routes/route_productos');
+const usuariosRoutes = require('./routes/route_usuarios');
+const carritoDetalleRoutes = require('./routes/route_carritos_detalle');
+
 const app = express();
 
-// LOG PARA MOSTRAR INFORMACIÓN EN CONSOLA
 app.use(logger('dev'));
-
-// PARSEAR LAS ENTRADAS DE SOLICITUD DE DATOS
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// RUTA DE BIENVENIDA
-app.get('/', (req, res) =>
-  res.status(200).send({
-    message: 'Bienvenido a la API REST de compras',
-  })
-);
+// Ruta principal
+app.get('/', (req, res) => res.status(200).send({
+    message: 'Bienvenido a la API REST de compras.',
+}));
 
+// 🔥 CONECTAR TODAS LAS RUTAS
+carritoRoutes(app);
+categoriasRoutes(app);
+productosRoutes(app);
+usuariosRoutes(app);
+carritoDetalleRoutes(app);
+
+// Puerto
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
 const server = http.createServer(app);
 
 server.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log(`¡Servidor encendido correctamente!`);
+    console.log(`http://localhost:${port}`);
 });
 
 module.exports = app;

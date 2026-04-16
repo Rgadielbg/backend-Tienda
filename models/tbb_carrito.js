@@ -16,11 +16,13 @@ module.exports = (sequelize, DataTypes) => {
   tbb_carrito.init({
     id_usuario: DataTypes.INTEGER,
     estado: DataTypes.STRING,
-    fecha_creacion: DataTypes.DATE,
+    
     total: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'tbb_carrito',
+    tableName: 'tbb_carrito',
+    timestamps: true
   });
 
   tbb_carrito.associate = (models)  =>{
